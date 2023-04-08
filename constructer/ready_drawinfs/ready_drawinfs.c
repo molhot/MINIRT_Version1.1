@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT_main.c                                      :+:      :+:    :+:   */
+/*   ready_drawinfs.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 13:03:26 by user              #+#    #+#             */
-/*   Updated: 2023/04/08 14:20:11 by user             ###   ########.fr       */
+/*   Created: 2023/04/08 14:25:35 by user              #+#    #+#             */
+/*   Updated: 2023/04/08 14:26:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../../miniRT.h"
 
-int main()
+void    ready_drawinf(t_allinfs *infs)
 {
-    t_allinfs   allinfs;
 
-    constructer(&allinfs);
-    execpart();
-    destructer();
 }
