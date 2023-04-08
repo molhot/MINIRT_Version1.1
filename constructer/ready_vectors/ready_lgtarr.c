@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ready_vectors.c                                    :+:      :+:    :+:   */
+/*   ready_lgtarr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 14:47:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/08 15:29:11 by user             ###   ########.fr       */
+/*   Created: 2023/04/08 15:29:42 by user              #+#    #+#             */
+/*   Updated: 2023/04/08 15:35:01 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../miniRT.h"
 
-void    ready_vectors(t_fvec *fvecs)
+void    ready_lgtarr(t_lgtarr *lgtarr)
 {
-    ready_o2eyeVec(fvecs->eye_v);
-    ready_lgtarr(fvecs->lgtarr);
+    t_lgtarr    *lgtinf;
+
+    lgtarr = malloc(sizeof(t_lgtarr) * 1);
+    lgtinf = lgtarr;
+    // when i make readfile func, i refacta this func
+    set_vec(&lgtinf->lgt_v, -5, 5, -5);
+    lgtinf->next_lgt = NULL;
+    //if you want increase light source, add func here
 }

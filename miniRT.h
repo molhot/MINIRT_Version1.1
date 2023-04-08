@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:06:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/08 15:03:07 by user             ###   ########.fr       */
+/*   Updated: 2023/04/08 15:28:36 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ typedef struct s_refCoeff {
 }t_refCoeff;
 
 typedef	struct s_plane{
-	t_vector	n;
-	t_vector	point;
+	t_vec		n;
+	t_vec		point;
 	t_refCoeff	t_refCoeff;
 	bool		has_specmir;
 	double		spec_mir;
@@ -101,6 +101,7 @@ typedef struct	s_objarr
 //above, shape infos
 
 //any fixed vec(ex: item inf, eye point...) contains t_fvec(=fixedpointvec)
+//* scrnvectr is prepared when x and y point is recognized
 typedef	struct	s_fvec
 {
 	t_vecinf	*eye_v;
@@ -131,7 +132,23 @@ typedef struct s_allinfs
 }t_allinfs;
 
 //explain functions flaw
-// constructer => ready_anyinfs
+
+//all flow start from main
+int	main();
+//main calls three function
+void    constructer(t_allinfs *infs);
+//exec
+//destructer
+
+// constructer => ready_anyinfs like vectors
+//first, ready infos of drawinfo
+void    ready_drawinf(t_drawinf *draw_inf);
+//second, ready fixed vectors
+void    ready_vectors(t_fvec *fvecs);
+void    ready_o2eyeVec(t_vecinf *eye_v);
+//when ready_vectors, use below funcs
+void    set_vec(t_vecinf *vecinf, double x, double y, double z);
+
 
 // exec 
 

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:03:26 by user              #+#    #+#             */
-/*   Updated: 2023/04/08 14:20:11 by user             ###   ########.fr       */
+/*   Updated: 2023/04/08 15:23:28 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ int main()
     t_allinfs   allinfs;
 
     constructer(&allinfs);
-    execpart();
-    destructer();
+    //execpart();
+    //destructer();
 }
