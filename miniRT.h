@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:06:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/08 14:27:38 by user             ###   ########.fr       */
+/*   Updated: 2023/04/08 14:48:42 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ typedef struct	s_objarr
 //any fixed vec(ex: item inf, eye point...) contains t_fvec(=fixedpointvec)
 typedef	struct	s_fvec
 {
-	t_vecinf	eye_v;
-	t_vecinf	scr_v;
+	t_vecinf	*eye_v;
+	t_vecinf	*scr_v;
 	t_lgtarr	*lgtarr;
 	t_objarr	*objarr;
 } t_fvec;
