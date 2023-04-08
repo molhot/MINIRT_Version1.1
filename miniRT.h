@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:06:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/08 15:28:36 by user             ###   ########.fr       */
+/*   Updated: 2023/04/08 18:10:11 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "minilibx-linux/mlx.h"
 
 //judge shape by magic number
-# define CIRCLE 1
+# define BALL 1
 # define PLANE 2
 # define CORN 3
 
@@ -73,15 +73,15 @@ typedef struct s_refCoeff {
 }t_refCoeff;
 
 typedef	struct s_plane{
-	t_vec		n;
-	t_vec		point;
+	t_vecinf	*n;
+	t_vecinf	*point;
 	t_refCoeff	t_refCoeff;
 	bool		has_specmir;
 	double		spec_mir;
 }t_plane;
 
 typedef	struct s_ball{
-	t_vecinf	center_v;
+	t_vecinf	*center_v;
 	double		rad;
 	t_refCoeff	t_refCoeff;
 	bool		has_specmir;
