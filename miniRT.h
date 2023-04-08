@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:06:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/08 14:48:42 by user             ###   ########.fr       */
+/*   Updated: 2023/04/08 15:03:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@
 # define CORN 3
 
 // simple vector
-typedef	struct s_vector
+typedef	struct s_vec
 {
 	double	x;
 	double	y;
 	double	z;
-} t_vector;
+} t_vec;
 
 // contain vec variable info
 typedef struct	s_vecinf
 {
-	t_vector	vec;
-	t_vector	u_vec;
+	t_vec		vec;
+	t_vec		u_vec;
 	double		size;
 } t_vecinf;
 
@@ -129,5 +129,12 @@ typedef struct s_allinfs
 	t_drawinf	*drawinf;
 	t_fvec		*fix_vecs;
 }t_allinfs;
+
+//explain functions flaw
+// constructer => ready_anyinfs
+
+// exec 
+
+// destructer
 
 # endif
