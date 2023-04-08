@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:06:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/08 14:16:58 by user             ###   ########.fr       */
+/*   Updated: 2023/04/08 14:27:38 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,8 @@ typedef struct s_drawinf
 	int			endian;
 	void		*mlx;
 	void		*mlx_win;
+	size_t		width;
+	size_t		height;
 }t_drawinf;
 
 //allinfo put togather to above struct

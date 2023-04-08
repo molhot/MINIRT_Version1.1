@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 14:23:52 by user              #+#    #+#             */
-/*   Updated: 2023/04/08 14:24:56 by user             ###   ########.fr       */
+/*   Updated: 2023/04/08 14:38:52 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,5 @@
 void    constructer(t_allinfs *infs)
 {
     ready_drawinf(infs);
+    ready_vectors(infs);
 }
