@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:06:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/09 14:13:46 by user             ###   ########.fr       */
+/*   Updated: 2023/04/09 14:26:31 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,14 +156,17 @@ void    set_vec(t_vecinf *vecinf, double x, double y, double z);
 // exec
 //while x and y are not last, it put pixcel to screen
 void    exec(t_allinfs *infs, double x, double y);
-//when put pixcel, use above func
-void	my_mlx_pixel_put(t_drawinf *data, int x, int y, int color);
+//when render start, point of screen is scaled to thirddimention
+void	dim2tdim(t_vecinf *dim_vec, double x, double y, double width, double height);
 //
 void	draw_fadecolor(double i, t_allinfs *infs, int x, int y);
 //by shape type, fade color
 double  fade_color(double fade);
 //while drawfunction is active, above vect set func is called when you set vector(s)
 void    setvec_d(t_vecinf *vecinf, double x, double y, double z);
+
+//when put pixcel, use above func
+void	my_mlx_pixel_put(t_drawinf *data, int x, int y, int color);
 
 // destructer
 
