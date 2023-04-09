@@ -11,6 +11,7 @@ SRCS = miniRT_main.c\
 					constructer/ready_vectors/set_vec/set_vec.c\
 			execpart/exec.c\
 				execpart/drawfunc/put_pix.c\
+				execpart/setvec_fordraw/setvec_d.c\
 
 OBJS = $(SRCS:.c=.o)
 
