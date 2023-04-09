@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:25:53 by user              #+#    #+#             */
-/*   Updated: 2023/04/08 18:51:22 by user             ###   ########.fr       */
+/*   Updated: 2023/04/09 13:42:17 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,13 @@ static  void    ready_ball(t_ball *ball)
 void    ready_object(t_objarr *objarr, double type)
 {
     if (type == BALL)
-        ready_ball(&objarr->ball);
+        ready_ball(objarr->ball);
     else if (type == PLANE)
         ready_plane(objarr->plane);
 }
 
 void    ready_objarr(t_objarr *objarr)
 {
-    t_objarr objinf;
-
     objarr = malloc(sizeof(objarr) * 1);
     ready_object(objarr, BALL);
     objarr->next_obj = malloc(sizeof(objarr) * 1);

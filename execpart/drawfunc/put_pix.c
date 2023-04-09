@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:02:18 by user              #+#    #+#             */
-/*   Updated: 2023/04/09 13:28:24 by user             ###   ########.fr       */
+/*   Updated: 2023/04/09 13:51:38 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 void	draw_fadecolor(double i, t_allinfs *infs, int x, int y)
 {
 	if (i > 1)
+    {
 		i = 1;
-    else if (i < 0)
+    }
+    if (i <= 0)
+    {
         i = 0;
+    }
 	my_mlx_pixel_put(infs->drawinf, x, y, fade_color(i));
 }
 

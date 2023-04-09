@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 14:43:41 by user              #+#    #+#             */
-/*   Updated: 2023/04/08 15:02:13 by user             ###   ########.fr       */
+/*   Updated: 2023/04/09 13:45:31 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,5 @@
 void    ready_o2eyeVec(t_vecinf *eye_v)
 {
     eye_v = malloc(sizeof(t_vecinf) * 1);
+    set_vec(eye_v, 0, 5, -5);
 }

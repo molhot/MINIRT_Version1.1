@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:06:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/09 13:09:54 by user             ###   ########.fr       */
+/*   Updated: 2023/04/09 13:48:18 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct	s_vecinf
 //lightsource is only or not ,so i have the lightinfo as list
 typedef	struct	s_lgtarr t_lgtarr;
 
-typedef	struct	s_lgtarr
+struct	s_lgtarr
 {
 	t_vecinf	lgt_v;
 	t_lgtarr	*next_lgt;
@@ -91,7 +91,7 @@ typedef	struct s_ball{
 //item amount is one or more, so have the inf of objs as list
 typedef	struct	s_objarr t_objarr;
 
-typedef struct	s_objarr
+struct s_objarr
 {
 	t_plane		*plane;
 	t_ball		*ball;
@@ -146,17 +146,20 @@ void    ready_drawinf(t_drawinf *draw_inf);
 //second, ready fixed vectors
 void    ready_vectors(t_fvec *fvecs);
 void    ready_o2eyeVec(t_vecinf *eye_v);
+void    ready_lgtarr(t_lgtarr *lgtarr);
+void    ready_objarr(t_objarr *objarr);
+
 //when ready_vectors, use below funcs
 void    set_vec(t_vecinf *vecinf, double x, double y, double z);
 
 
 // exec
 //while x and y are not last, it put pixcel to screen
-
+void    exec(t_allinfs *infs, double x, double y);
 //when put pixcel, use above func
 void	my_mlx_pixel_put(t_drawinf *data, int x, int y, int color);
 //
-void	draw_fadecolor(double i, t_allinfs *infs, int x, int y, int type);
+void	draw_fadecolor(double i, t_allinfs *infs, int x, int y);
 //by shape type, fade color
 double  fade_color(double fade);
 
