@@ -13,7 +13,8 @@ SRCS = miniRT_main.c\
 				execpart/drawfunc/put_pix.c\
 				execpart/setvec_fordraw/setvec_d.c\
 				execpart/vector_calc/vectorArithmetic.c\
-				execpart/vector_calc/Scal_veccalc.c
+				execpart/vector_calc/Scal_veccalc.c\
+				execpart/obtain_shapetype/obtain_shapetype.c
 
 OBJS = $(SRCS:.c=.o)
 
