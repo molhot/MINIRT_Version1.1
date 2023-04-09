@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:06:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/09 14:48:57 by user             ###   ########.fr       */
+/*   Updated: 2023/04/09 15:48:39 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,8 +156,11 @@ void    set_vec(t_vecinf *vecinf, double x, double y, double z);
 // exec
 //while x and y are not last, it put pixcel to screen
 void    exec(t_allinfs *infs, double x, double y);
-//when render start, point of screen is scaled to thirddimention
-void	dim2tdim(t_vecinf *dim_vec, double x, double y, double width, double height);
+
+//before render, calc any vectors
+void	render_ready(t_vecinf *eye2scr, t_allinfs *infs);
+// when check intersection(its), the method of check intersection is different, so check the shapetype
+int		obtain_shapetype(t_objarr *sub);
 //
 void	draw_fadecolor(double i, t_allinfs *infs, int x, int y);
 //by shape type, fade color
