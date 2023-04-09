@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:06:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/09 13:05:10 by user             ###   ########.fr       */
+/*   Updated: 2023/04/09 13:09:54 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,10 @@ void    set_vec(t_vecinf *vecinf, double x, double y, double z);
 
 //when put pixcel, use above func
 void	my_mlx_pixel_put(t_drawinf *data, int x, int y, int color);
+//
+void	draw_fadecolor(double i, t_allinfs *infs, int x, int y, int type);
+//by shape type, fade color
+double  fade_color(double fade);
 
 // destructer
 
