@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:25:53 by user              #+#    #+#             */
-/*   Updated: 2023/04/09 14:57:18 by user             ###   ########.fr       */
+/*   Updated: 2023/04/09 20:43:59 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static  void    refCoeff(t_refCoeff *refcoeff)
 
 static  void    ready_plane(t_plane *plane)
 {
-    plane = malloc(sizeof(t_plane) * 1);
     plane->n = malloc(sizeof(t_vecinf) * 1);
     set_vec(plane->n, 0, 1, 0);
     plane->point = malloc(sizeof(t_vecinf) * 1);
@@ -39,9 +38,8 @@ static  void    ready_plane(t_plane *plane)
 
 static  void    ready_ball(t_ball *ball)
 {
-    ball = malloc(sizeof(t_ball) * 1);
     ball->center_v = malloc(sizeof(t_vecinf) * 1);
-    set_vec(ball->center_v, 1, 0, -1);
+    set_vec(ball->center_v, 0, 0, 5);
     ball->rad = 1;
     refCoeff(&ball->t_refCoeff);
     ball->has_specmir = false;
@@ -52,22 +50,27 @@ void    ready_object(t_objarr *objarr, double type)
 {
     if (type == BALL)
     {
+        objarr->ball = malloc(sizeof(t_ball) * 1);
         ready_ball(objarr->ball);
         objarr->plane = NULL;
     }
     else if (type == PLANE)
     {
+        objarr->plane = malloc(sizeof(t_plane) * 1);
         ready_plane(objarr->plane);
         objarr->ball = NULL;
     }
 }
 
-void    ready_objarr(t_objarr *objarr)
+void    ready_objarr(t_fvec *fvecs)
 {
-    objarr = malloc(sizeof(objarr) * 1);
-    ready_object(objarr, BALL);
-    objarr->next_obj = malloc(sizeof(objarr) * 1);
-    objarr = objarr->next_obj;
-    ready_object(objarr, PLANE);
-    objarr->next_obj = NULL;
+    t_objarr    *tmp_obj;
+
+    fvecs->objarr = malloc(sizeof(t_objarr) * 1);
+    tmp_obj = fvecs->objarr;
+    ready_object(tmp_obj, BALL);
+    tmp_obj->next_obj = malloc(sizeof(t_objarr) * 1);
+    tmp_obj = tmp_obj->next_obj;
+    ready_object(tmp_obj, PLANE);
+    tmp_obj->next_obj = NULL;
 }

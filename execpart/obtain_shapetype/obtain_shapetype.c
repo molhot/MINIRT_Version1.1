@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 14:58:28 by user              #+#    #+#             */
-/*   Updated: 2023/04/09 15:00:17 by user             ###   ########.fr       */
+/*   Updated: 2023/04/09 18:10:28 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 int obtain_shapetype(t_objarr *sub)
 {
-    if (sub->ball == NULL)
-        return (PLANE);
-    if (sub->plane == NULL)
+    if (sub->ball != NULL)
         return (BALL);
-    return (0);
+    else if (sub->plane != NULL)
+        return (PLANE);
+    else
+        return (-1);
 }

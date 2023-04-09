@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:06:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/09 15:48:39 by user             ###   ########.fr       */
+/*   Updated: 2023/04/09 17:04:22 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,8 @@ typedef struct s_drawinf
 	int			endian;
 	void		*mlx;
 	void		*mlx_win;
-	size_t		width;
-	size_t		height;
+	int			width;
+	int			height;
 }t_drawinf;
 
 //allinfo put togather to above struct
@@ -145,9 +145,9 @@ void    constructer(t_allinfs *infs);
 void    ready_drawinf(t_drawinf *draw_inf);
 //second, ready fixed vectors
 void    ready_vectors(t_fvec *fvecs);
-void    ready_o2eyeVec(t_vecinf *eye_v);
-void    ready_lgtarr(t_lgtarr *lgtarr);
-void    ready_objarr(t_objarr *objarr);
+void    ready_o2eyeVec(t_fvec *fvecs);
+void    ready_lgtarr(t_fvec *fvecs);
+void    ready_objarr(t_fvec *fvecs);
 
 //when ready_vectors, use below funcs
 void    set_vec(t_vecinf *vecinf, double x, double y, double z);
@@ -155,12 +155,16 @@ void    set_vec(t_vecinf *vecinf, double x, double y, double z);
 
 // exec
 //while x and y are not last, it put pixcel to screen
-void    exec(t_allinfs *infs, double x, double y);
+void    exec(t_allinfs *infs);
 
 //before render, calc any vectors
-void	render_ready(t_vecinf *eye2scr, t_allinfs *infs);
+double	render_ready(t_vecinf *eye2scr, t_allinfs *infs);
 // when check intersection(its), the method of check intersection is different, so check the shapetype
 int		obtain_shapetype(t_objarr *sub);
+
+//check its every shape
+double	ray2ball_itsch(t_vecinf *eye2scr, t_allinfs *infs, t_ball *ball);
+
 //
 void	draw_fadecolor(double i, t_allinfs *infs, int x, int y);
 //by shape type, fade color

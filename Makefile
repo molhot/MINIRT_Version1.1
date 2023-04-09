@@ -11,6 +11,7 @@ SRCS = miniRT_main.c\
 					constructer/ready_vectors/set_vec/set_vec.c\
 			execpart/exec.c\
 				execpart/render_ready/render_ready.c\
+					execpart/render_ready/check_itsexist/its_ch.c\
 				execpart/drawfunc/put_pix.c\
 				execpart/setvec_fordraw/setvec_d.c\
 				execpart/vector_calc/vectorArithmetic.c\
