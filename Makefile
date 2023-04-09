@@ -4,11 +4,11 @@ LIBMLX = minilibx-linux/libmlx_Linux.a
 SRCS = miniRT_main.c\
 			constructer/constructer.c\
 				constructer/ready_drawinfs/ready_drawinfs.c\
-				constructer/ready_vectors/objarr.c\
-				constructer/ready_vectors/ready_eyevector.c\
-				constructer/ready_vectors/ready_lgtarr.c\
 				constructer/ready_vectors/ready_vectors.c\
-				constructer/ready_vectors/set_vec.c\
+					constructer/ready_vectors/ready_samevec/objarr.c\
+					constructer/ready_vectors/ready_samevec/ready_eyevector.c\
+					constructer/ready_vectors/ready_samevec/ready_lgtarr.c\
+					constructer/ready_vectors/set_vec/set_vec.c\
 			execpart/exec.c\
 				execpart/drawfunc/put_pix.c\
 
