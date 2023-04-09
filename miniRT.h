@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:06:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/09 17:04:22 by user             ###   ########.fr       */
+/*   Updated: 2023/04/09 21:57:22 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,9 @@ void	neg_vec(t_vecinf *sub, t_vec *v1, t_vec *v2); // like v1 - v2
 double	dot_vec(t_vec *v1, t_vec *v2); // like v1 * v2
 void    t_mix_vec(t_vecinf *sub, t_vec *v1, double t, t_vec *v2); // like v1 + t * v2
 void    t_neg_vec(t_vecinf *sub, t_vec *v1, double t, t_vec *v2); // like v1 - t * v2
+
+//debug
+void	show_vec(t_vecinf *vecinf);
 
 // destructer
 

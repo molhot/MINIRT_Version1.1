@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   its_ch.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 15:55:31 by user              #+#    #+#             */
-/*   Updated: 2023/04/09 21:19:01 by user             ###   ########.fr       */
+/*   Updated: 2023/04/09 23:12:57 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ double    ray2ball_itsch(t_vecinf *eye2scr, t_allinfs *infs, t_ball *ball)
 
 	neg_vec(&eye2ballmid, &ball->center_v->vec, &infs->fix_vecs->eye_v->vec);
 	if (d_coeffi(eye2scr, &eye2ballmid, ball->rad) >= 0)
+	{
+		printf("ch\n");
 		return 1;
-	else
-		return 0;
+	}
+	return 0;
 }

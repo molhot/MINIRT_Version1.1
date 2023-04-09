@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ready_vectors.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 14:47:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/09 17:04:08 by user             ###   ########.fr       */
+/*   Updated: 2023/04/09 22:16:55 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,4 @@ void    ready_vectors(t_fvec *fvecs)
     ready_o2eyeVec(fvecs);
     ready_lgtarr(fvecs);
     ready_objarr(fvecs);
-    fvecs->scr_v = malloc(sizeof(t_vecinf) * 1);
 }

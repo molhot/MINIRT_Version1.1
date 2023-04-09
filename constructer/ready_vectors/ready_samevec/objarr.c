@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objarr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:25:53 by user              #+#    #+#             */
-/*   Updated: 2023/04/09 20:43:59 by user             ###   ########.fr       */
+/*   Updated: 2023/04/09 22:40:20 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ void    ready_object(t_objarr *objarr, double type)
 
 void    ready_objarr(t_fvec *fvecs)
 {
-    t_objarr    *tmp_obj;
+	t_objarr	*tmp_obj;
 
-    fvecs->objarr = malloc(sizeof(t_objarr) * 1);
-    tmp_obj = fvecs->objarr;
-    ready_object(tmp_obj, BALL);
-    tmp_obj->next_obj = malloc(sizeof(t_objarr) * 1);
-    tmp_obj = tmp_obj->next_obj;
-    ready_object(tmp_obj, PLANE);
-    tmp_obj->next_obj = NULL;
+	fvecs->objarr = malloc(sizeof(t_objarr) * 1);
+	tmp_obj = fvecs->objarr;
+	ready_object(tmp_obj, BALL);
+	tmp_obj->next_obj = malloc(sizeof(t_objarr) * 1);
+	tmp_obj = tmp_obj->next_obj;
+	ready_object(tmp_obj, PLANE);
+	tmp_obj->next_obj = NULL;
 }
