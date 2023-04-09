@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:06:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/09 14:26:31 by user             ###   ########.fr       */
+/*   Updated: 2023/04/09 14:48:57 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,13 @@ void    setvec_d(t_vecinf *vecinf, double x, double y, double z);
 
 //when put pixcel, use above func
 void	my_mlx_pixel_put(t_drawinf *data, int x, int y, int color);
+
+//when want to valc vec, use above funcs
+void    add_vec(t_vecinf *sub, t_vec *v1, t_vec *v2); // like v1 + v2
+void	neg_vec(t_vecinf *sub, t_vec *v1, t_vec *v2); // like v1 - v2
+double	dot_vec(t_vec *v1, t_vec *v2); // like v1 * v2
+void    t_mix_vec(t_vecinf *sub, t_vec *v1, double t, t_vec *v2); // like v1 + t * v2
+void    t_neg_vec(t_vecinf *sub, t_vec *v1, double t, t_vec *v2); // like v1 - t * v2
 
 // destructer
 
