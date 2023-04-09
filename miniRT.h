@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:06:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/08 18:10:11 by user             ###   ########.fr       */
+/*   Updated: 2023/04/09 13:05:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,11 @@ void    ready_o2eyeVec(t_vecinf *eye_v);
 void    set_vec(t_vecinf *vecinf, double x, double y, double z);
 
 
-// exec 
+// exec
+//while x and y are not last, it put pixcel to screen
+
+//when put pixcel, use above func
+void	my_mlx_pixel_put(t_drawinf *data, int x, int y, int color);
 
 // destructer
 
