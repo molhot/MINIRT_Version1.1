@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:06:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/09 21:57:22 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/10 10:48:00 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,11 +164,13 @@ int		obtain_shapetype(t_objarr *sub);
 
 //check its every shape
 double	ray2ball_itsch(t_vecinf *eye2scr, t_allinfs *infs, t_ball *ball);
+double	d_coeffi(t_vecinf *eye2scr, t_vecinf *eye2ballmid, double r);
+double  ray2ballits(t_vecinf *eye2scr, t_vecinf *eye2ballmid, double rad);
 
 //
-void	draw_fadecolor(double i, t_allinfs *infs, int x, int y);
+void	draw_fadecolor(double i, t_allinfs *infs, int x, int y, int type);
 //by shape type, fade color
-double  fade_color(double fade);
+double  fade_color(double fade, int type);
 //while drawfunction is active, above vect set func is called when you set vector(s)
 void    setvec_d(t_vecinf *vecinf, double x, double y, double z);
 

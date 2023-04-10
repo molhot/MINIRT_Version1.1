@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_ready.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 15:06:43 by user              #+#    #+#             */
-/*   Updated: 2023/04/09 23:14:05 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/10 10:53:20 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ double	render_ready(t_vecinf *eye2scr, t_allinfs *infs)
 	while (objarr != NULL)
 	{
 		if (obtain_shapetype(objarr) == BALL)
-		{
-			if (ray2ball_itsch(eye2scr, infs, objarr->ball) == 0)
-				check = 1;
-		}
+			check = ray2ball_itsch(eye2scr, infs, objarr->ball);
 		objarr = objarr->next_obj;
 	}
 	return (check);
