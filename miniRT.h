@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:06:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/10 10:48:00 by user             ###   ########.fr       */
+/*   Updated: 2023/04/10 19:21:00 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,8 @@ void	draw_fadecolor(double i, t_allinfs *infs, int x, int y, int type);
 double  fade_color(double fade, int type);
 //while drawfunction is active, above vect set func is called when you set vector(s)
 void    setvec_d(t_vecinf *vecinf, double x, double y, double z);
+
+double map(double num, double min, double max, double t_min, double t_max);
 
 //when put pixcel, use above func
 void	my_mlx_pixel_put(t_drawinf *data, int x, int y, int color);
