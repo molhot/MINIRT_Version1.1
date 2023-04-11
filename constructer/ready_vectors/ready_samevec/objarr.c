@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:25:53 by user              #+#    #+#             */
-/*   Updated: 2023/04/09 22:40:20 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/11 23:04:20 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,5 @@ void    ready_objarr(t_fvec *fvecs)
 	fvecs->objarr = malloc(sizeof(t_objarr) * 1);
 	tmp_obj = fvecs->objarr;
 	ready_object(tmp_obj, BALL);
-	tmp_obj->next_obj = malloc(sizeof(t_objarr) * 1);
-	tmp_obj = tmp_obj->next_obj;
-	ready_object(tmp_obj, PLANE);
-	tmp_obj->next_obj = NULL;
+	fvecs->objarr->next_obj = NULL;
 }

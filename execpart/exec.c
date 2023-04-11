@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 12:56:45 by user              #+#    #+#             */
-/*   Updated: 2023/04/11 19:03:13 by user             ###   ########.fr       */
+/*   Updated: 2023/04/11 23:42:17 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../miniRT.h"
+#include <unistd.h>
 
 static  void	dim2tdim(t_vecinf *dim_vec, double x, double y, double width, double height)
 {
@@ -26,10 +27,14 @@ static  void	dim2tdim(t_vecinf *dim_vec, double x, double y, double width, doubl
 
 static void	render(t_allinfs *infs, double x, double y, double i)
 {
-	if (i != 0)
+	if (i != -999)
+	{
 		draw_fadecolor(i, infs, (double)x, (double)y, BALL);
+	}
 	else
+	{
 		draw_fadecolor(1, infs, (double)x, (double)y, 0);
+	}
 }
 
 void    exec(t_allinfs *infs)

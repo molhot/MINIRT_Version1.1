@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_pix.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:02:18 by user              #+#    #+#             */
-/*   Updated: 2023/04/10 10:48:55 by user             ###   ########.fr       */
+/*   Updated: 2023/04/11 23:48:42 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	draw_fadecolor(double i, t_allinfs *infs, int x, int y, int type)
 double  fade_color(double fade, int type)
 {
     if (type == BALL)
-        return ((int)(255 * fade) << 16) | ((int)(5 * fade) << 8) | (int)(255 * fade);
-    return ((int)(255 << 16) | (int)(255 << 8) | (int)(255));
+        return ((int)(178 * fade) << 16) | ((int)(100 * fade) << 8) | (int)(2 * fade);
+    return ((int)(130 << 16) | (int)(188 << 8) | (int)(20));
 }
 
 void	my_mlx_pixel_put(t_drawinf *data, int x, int y, int color)
