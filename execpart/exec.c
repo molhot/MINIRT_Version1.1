@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 12:56:45 by user              #+#    #+#             */
-/*   Updated: 2023/04/15 22:43:20 by user             ###   ########.fr       */
+/*   Updated: 2023/04/15 23:14:28 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ void    exec(t_allinfs *infs)
 		{
 			infs->drawinf->x = x;
 			infs->drawinf->y = y;
-			if ((x >= 250 && x <= 400) && ( y >= 380 && y <= 450))
-			{
-				printf("x %d, y %d\n", x, y);
+			// if ((x >= 250 && x <= 400) && ( y >= 380 && y <= 450))
+			// {
+			// 	printf("x %d, y %d\n", x, y);
 				dim2tdim(infs->fix_vecs->scr_v, x, y, (double)infs->drawinf->width, (double)infs->drawinf->height);
 				neg_vec(&eye2scr, &infs->fix_vecs->scr_v->vec, &infs->fix_vecs->eye_v->vec);
 				render_ready(&eye2scr, infs);
-			}
+			// }
 			x++;
 		}
 		x = 0;
