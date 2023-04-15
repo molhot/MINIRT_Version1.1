@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_pix.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:02:18 by user              #+#    #+#             */
-/*   Updated: 2023/04/15 11:12:08 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/15 21:56:54 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	draw_fadecolor(double i, t_allinfs *infs, int x, int y, int type)
 double  fade_color(double fade, int type)
 {
     if (type == BALL)
-        return ((int)(178 * fade) << 16) | ((int)(100 * fade) << 8) | (int)(2 * fade);
+        return ((int)(255 * fade) << 16) | ((int)(255 * fade) << 8) | (int)(255 * fade);
     return ((int)(130 << 16) | (int)(188 << 8) | (int)(20));
 }
 

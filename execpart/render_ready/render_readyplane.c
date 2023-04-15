@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 13:28:24 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/15 21:49:41 by user             ###   ########.fr       */
+/*   Updated: 2023/04/15 22:46:42 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,14 @@ bool	shade_ch(t_objarr *objarr, t_vecinf *its, t_vecinf *its2lgt, t_allinfs *inf
 	t_vecinf	itsep;
 	t_vecinf	itsep2lgt;
 
-	epsiron = 1 / 512;
+	epsiron = -1;
 	lgtarr = infs->fix_vecs->lgtarr;
 	while (lgtarr != NULL)
 	{
 		t_mix_vec(&itsep, &its->vec, epsiron, &its2lgt->u_vec);
 		neg_vec(&itsep2lgt, &lgtarr->lgt_v.vec, &itsep.vec);
-		printf("%p %p\n", objarr, objarr->next_obj);
 		if (judge_showditem(objarr, &itsep2lgt, infs) != -1)
-		{
-			i++;
 			return (false);
-		}
 		lgtarr = lgtarr->next_lgt;
 	}
 	return (true);
