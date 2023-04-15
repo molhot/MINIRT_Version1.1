@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objarr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:25:53 by user              #+#    #+#             */
-/*   Updated: 2023/04/15 15:22:33 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/15 21:32:50 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static  void    ready_ball(t_ball *ball, int pos)
     if (pos == 1)
         set_vec(ball->center_v, 0, 0, 5);
     else if (pos == 2)
-        set_vec(ball->center_v, 2, 0, 10);
+        set_vec(ball->center_v, 3, 0, 10);
     ball->rad = 1;
     refCoeff(&ball->t_refCoeff);
     ball->has_specmir = false;
