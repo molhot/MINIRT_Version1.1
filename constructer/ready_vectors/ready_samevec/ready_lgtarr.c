@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ready_lgtarr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 15:29:42 by user              #+#    #+#             */
-/*   Updated: 2023/04/09 20:06:43 by user             ###   ########.fr       */
+/*   Updated: 2023/04/15 11:49:12 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void    ready_lgtarr(t_fvec *fvecs)
 
     fvecs->lgtarr = malloc(sizeof(t_lgtarr) * 1);
     lgtinf = fvecs->lgtarr;
-    set_vec(&lgtinf->lgt_v, -5, 5, -5);
+    set_vec(&lgtinf->lgt_v, -5, 5, 0);
     lgtinf->next_lgt = NULL;
 }

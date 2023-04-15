@@ -6,11 +6,23 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:02:18 by user              #+#    #+#             */
-/*   Updated: 2023/04/11 23:48:42 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/15 11:12:08 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../miniRT.h"
+
+void	render(t_allinfs *infs, double x, double y, double i)
+{
+	if (i != -1)
+	{
+		draw_fadecolor(i, infs, (double)x, (double)y, BALL);
+	}
+	else
+	{
+		draw_fadecolor(1, infs, (double)x, (double)y, 0);
+	}
+}
 
 void	draw_fadecolor(double i, t_allinfs *infs, int x, int y, int type)
 {

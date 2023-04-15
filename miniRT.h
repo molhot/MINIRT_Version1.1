@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:06:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/10 19:21:00 by user             ###   ########.fr       */
+/*   Updated: 2023/04/15 12:00:34 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,6 @@ typedef struct s_refCoeff {
 	double	alpha;
 	double	Ia;
 	double	Ii;
-	double	n_l;
-	double	v_r;
-	double	Rs;
 }t_refCoeff;
 
 typedef	struct s_plane{
@@ -122,6 +119,8 @@ typedef struct s_drawinf
 	void		*mlx_win;
 	int			width;
 	int			height;
+	int			x;
+	int			y;
 }t_drawinf;
 
 //allinfo put togather to above struct
@@ -158,7 +157,8 @@ void    set_vec(t_vecinf *vecinf, double x, double y, double z);
 void    exec(t_allinfs *infs);
 
 //before render, calc any vectors
-double	render_ready(t_vecinf *eye2scr, t_allinfs *infs);
+void	render_ready(t_vecinf *eye2scr, t_allinfs *infs);
+ssize_t	judge_showditem(t_objarr *objarr, t_vecinf *eye2scr, t_allinfs *infs);
 // when check intersection(its), the method of check intersection is different, so check the shapetype
 int		obtain_shapetype(t_objarr *sub);
 
@@ -177,6 +177,8 @@ void    setvec_d(t_vecinf *vecinf, double x, double y, double z);
 double map(double num, double min, double max, double t_min, double t_max);
 
 //when put pixcel, use above func
+// render is oversitefunc of put_pixcel
+void	render(t_allinfs *infs, double x, double y, double i);
 void	my_mlx_pixel_put(t_drawinf *data, int x, int y, int color);
 
 //when want to valc vec, use above funcs
@@ -185,6 +187,7 @@ void	neg_vec(t_vecinf *sub, t_vec *v1, t_vec *v2); // like v1 - v2
 double	dot_vec(t_vec *v1, t_vec *v2); // like v1 * v2
 void    t_mix_vec(t_vecinf *sub, t_vec *v1, double t, t_vec *v2); // like v1 + t * v2
 void    t_neg_vec(t_vecinf *sub, t_vec *v1, double t, t_vec *v2); // like v1 - t * v2
+void    t_mix_vec_all(t_vecinf *sub, double t1, t_vec *v1, double t2, t_vec *v2);
 
 //debug
 void	show_vec(t_vecinf *vecinf);

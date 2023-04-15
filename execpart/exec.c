@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 12:56:45 by user              #+#    #+#             */
-/*   Updated: 2023/04/11 23:42:17 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/15 11:11:54 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,6 @@ static  void	dim2tdim(t_vecinf *dim_vec, double x, double y, double width, doubl
 	setvec_d(dim_vec, tdim_x, tdim_y, tdim_z);
 }
 
-static void	render(t_allinfs *infs, double x, double y, double i)
-{
-	if (i != -999)
-	{
-		draw_fadecolor(i, infs, (double)x, (double)y, BALL);
-	}
-	else
-	{
-		draw_fadecolor(1, infs, (double)x, (double)y, 0);
-	}
-}
-
 void    exec(t_allinfs *infs)
 {
 	t_vecinf	eye2scr;
@@ -49,9 +37,11 @@ void    exec(t_allinfs *infs)
 	{
 		while (x != infs->drawinf->width)
 		{
+			infs->drawinf->x = x;
+			infs->drawinf->y = y;
 			dim2tdim(infs->fix_vecs->scr_v, x, y, (double)infs->drawinf->width, (double)infs->drawinf->height);
 			neg_vec(&eye2scr, &infs->fix_vecs->scr_v->vec, &infs->fix_vecs->eye_v->vec);
-			render(infs, x, y, render_ready(&eye2scr, infs));
+			render_ready(&eye2scr, infs);
 			x++;
 		}
 		x = 0;
