@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:06:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/15 12:00:34 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/15 15:04:58 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,12 +158,15 @@ void    exec(t_allinfs *infs);
 
 //before render, calc any vectors
 void	render_ready(t_vecinf *eye2scr, t_allinfs *infs);
+double	reanderready_ball(t_vecinf *eye2scr, t_allinfs *infs, t_objarr *objarr);
+double	reanderready_plane(t_vecinf *eye2scr, t_allinfs *infs, t_objarr *objarr);
 ssize_t	judge_showditem(t_objarr *objarr, t_vecinf *eye2scr, t_allinfs *infs);
 // when check intersection(its), the method of check intersection is different, so check the shapetype
 int		obtain_shapetype(t_objarr *sub);
 
 //check its every shape
 double	ray2ball_itsch(t_vecinf *eye2scr, t_allinfs *infs, t_ball *ball);
+double	ray2plane_itsch(t_vecinf *eye2scr, t_allinfs *infs, t_plane *plane);
 double	d_coeffi(t_vecinf *eye2scr, t_vecinf *eye2ballmid, double r);
 double  ray2ballits(t_vecinf *eye2scr, t_vecinf *eye2ballmid, double rad);
 

@@ -11,7 +11,10 @@ SRCS = miniRT_main.c\
 					constructer/ready_vectors/set_vec/set_vec.c\
 			execpart/exec.c\
 				execpart/render_ready/render_ready.c\
+				execpart/render_ready/render_readyball.c\
+				execpart/render_ready/render_readyplane.c\
 					execpart/render_ready/check_itsexist/its_ch.c\
+					execpart/render_ready/check_itsexist/itsch_plane.c\
 					execpart/render_ready/scale_change/scale_change.c\
 				execpart/render_ready/judge_mapitem.c\
 				execpart/drawfunc/put_pix.c\

@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ready_lgtarr.c                                     :+:      :+:    :+:   */
+/*   itsch_plane.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 15:29:42 by user              #+#    #+#             */
-/*   Updated: 2023/04/15 16:34:14 by mochitteiun      ###   ########.fr       */
+/*   Created: 2023/04/15 12:12:44 by mochitteiun       #+#    #+#             */
+/*   Updated: 2023/04/15 15:19:23 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../miniRT.h"
 
-void    ready_lgtarr(t_fvec *fvecs)
+double	ray2plane_itsch(t_vecinf *eye2scr, t_allinfs *infs, t_plane *plane)
 {
-    t_lgtarr    *lgtinf;
+	t_vecinf	plane2eye;
+	double		s_n;
+	double		d_n;
 
-    fvecs->lgtarr = malloc(sizeof(t_lgtarr) * 1);
-    lgtinf = fvecs->lgtarr;
-    set_vec(&lgtinf->lgt_v, -5, 3, 0);
-    lgtinf->next_lgt = NULL;
+	neg_vec(&plane2eye, &infs->fix_vecs->eye_v->vec, &plane->point->vec);
+	s_n = dot_vec(&plane2eye.vec, &plane->n->vec);
+	d_n = dot_vec(&eye2scr->vec, &plane->n->vec);
+	return ((-1 * s_n) / d_n);
 }
