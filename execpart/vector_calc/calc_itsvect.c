@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calc_itsvect.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:40:32 by user              #+#    #+#             */
-/*   Updated: 2023/04/11 08:14:18 by user             ###   ########.fr       */
+/*   Updated: 2023/04/16 13:51:42 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,18 @@ static double	formula_forsolution(double A, double B, double D)
 	if (one_ans > sec_ans)
 		return (sec_ans);
 	return (one_ans);
+}
+
+static double	d_coeffi(t_vecinf *eye2scr, t_vecinf *ballmid2eye, double r)
+{
+	double coefficient_A;
+	double coefficient_B;
+	double coefficient_C;
+
+	coefficient_A = pow(eye2scr->size, 2);
+	coefficient_B = 2 * (dot_vec(&ballmid2eye->vec, &eye2scr->vec));
+	coefficient_C = pow(ballmid2eye->size, 2) - pow(r, 2);
+	return (pow(coefficient_B, 2) - 4 * coefficient_A * coefficient_C);
 }
 
 double	ray2ballits(t_vecinf *eye2scr, t_vecinf *ballmid2eye, double rad)

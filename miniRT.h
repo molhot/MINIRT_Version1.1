@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:06:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/15 15:04:58 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/16 14:56:50 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,7 @@ int		obtain_shapetype(t_objarr *sub);
 //check its every shape
 double	ray2ball_itsch(t_vecinf *eye2scr, t_allinfs *infs, t_ball *ball);
 double	ray2plane_itsch(t_vecinf *eye2scr, t_allinfs *infs, t_plane *plane);
-double	d_coeffi(t_vecinf *eye2scr, t_vecinf *eye2ballmid, double r);
+double  itsray2otherball_itsch(t_vecinf *itsep2lgt, t_ball *ball, t_vecinf *its);
 double  ray2ballits(t_vecinf *eye2scr, t_vecinf *eye2ballmid, double rad);
 
 //

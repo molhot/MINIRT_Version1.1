@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_readyplane.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 13:28:24 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/15 23:18:00 by user             ###   ########.fr       */
+/*   Updated: 2023/04/16 14:57:13 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,44 +26,23 @@ double	calc_Rsplane(double n_l, t_vecinf *its2lgt, t_plane *plane, t_vecinf *eye
 
 double i = 0;
 
-static	void	upgrade_t(double *t, double tmp_t, ssize_t *position_r, ssize_t position, bool *f_action)
+bool	judge_showditem_2(t_objarr *objarr, t_vecinf *itsep2lgt, t_allinfs *infs, t_vecinf *its)
 {
-	*t = tmp_t;
-	*position_r = position;
-	*f_action = false;
-}
-
-ssize_t	judge_showditem_2(t_objarr *objarr, t_vecinf *eye2scr, t_allinfs *infs)
-{
-	double	tmp_t;
-	double	t;
-	bool	f_action;
-	ssize_t	position;
-	ssize_t	position_r;
-
-	f_action = true;
-	position = 0;
-	t = 0;
 	while (objarr != NULL)
 	{
 		if (obtain_shapetype(objarr) == BALL)
-			tmp_t = ray2ball_itsch(eye2scr, infs, objarr->ball);
-		else if (obtain_shapetype(objarr) == PLANE)
-			tmp_t = ray2plane_itsch(eye2scr, infs, objarr->plane);
-		if (f_action == true && tmp_t > 0)
-			upgrade_t(&t, tmp_t, &position_r, position, &f_action);
-		else
 		{
-			if (t > tmp_t && tmp_t > 0)
-				upgrade_t(&t, tmp_t, &position_r, position, &f_action);
+			if (itsray2otherball_itsch(itsep2lgt, objarr->ball, its) > 0)
+				return (false);
+		}
+		else if (obtain_shapetype(objarr) == PLANE)
+		{
+			if (ray2plane_itsch(itsep2lgt, infs, objarr->plane) > 0)
+				return (false);
 		}
 		objarr = objarr->next_obj;
-		position++;
 	}
-	if (f_action == true)
-		return (-1);
-	else
-		return (position_r);
+	return (true);
 }
 
 bool	shade_ch(t_objarr *objarr, t_vecinf *its, t_vecinf *its2lgt, t_allinfs *infs, t_lgtarr *lgtarr)
@@ -73,11 +52,9 @@ bool	shade_ch(t_objarr *objarr, t_vecinf *its, t_vecinf *its2lgt, t_allinfs *inf
 	t_vecinf	itsep2lgt;
 
 	epsiron = 1 / 512;
-	t_mix_vec(&itsep, &its->vec, epsiron, &its2lgt->u_vec);
+	t_mix_vec(&itsep, &its->vec, epsiron, &its2lgt->vec);
 	neg_vec(&itsep2lgt, &lgtarr->lgt_v.vec, &itsep.vec);
-	if (judge_showditem_2(objarr, &itsep2lgt, infs) != -1)
-		return (false);
-	return (true);
+	return (judge_showditem_2(objarr, &itsep2lgt, infs, its));
 }
 
 double j = 0;
