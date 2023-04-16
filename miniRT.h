@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:06:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/16 14:56:50 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/16 23:44:35 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,10 +157,12 @@ void    set_vec(t_vecinf *vecinf, double x, double y, double z);
 void    exec(t_allinfs *infs);
 
 //before render, calc any vectors
-void	render_ready(t_vecinf *eye2scr, t_allinfs *infs);
+ssize_t	grasp_position(t_vecinf *eye2scr, t_allinfs *infs);
 double	reanderready_ball(t_vecinf *eye2scr, t_allinfs *infs, t_objarr *objarr);
 double	reanderready_plane(t_vecinf *eye2scr, t_allinfs *infs, t_objarr *objarr);
 ssize_t	judge_showditem(t_objarr *objarr, t_vecinf *eye2scr, t_allinfs *infs);
+
+double	draw_anyobj(ssize_t position, t_vecinf *eye2scr, t_allinfs *infs);
 // when check intersection(its), the method of check intersection is different, so check the shapetype
 int		obtain_shapetype(t_objarr *sub);
 
@@ -171,9 +173,10 @@ double  itsray2otherball_itsch(t_vecinf *itsep2lgt, t_ball *ball, t_vecinf *its)
 double  ray2ballits(t_vecinf *eye2scr, t_vecinf *eye2ballmid, double rad);
 
 //
-void	draw_fadecolor(double i, t_allinfs *infs, int x, int y, int type);
+void	draw_fadecolor(double i, t_allinfs *infs, int x, int y, t_objarr *objarr);
 //by shape type, fade color
 double  fade_color(double fade, int type);
+void	draw_background(t_allinfs *infs);
 //while drawfunction is active, above vect set func is called when you set vector(s)
 void    setvec_d(t_vecinf *vecinf, double x, double y, double z);
 
@@ -181,7 +184,7 @@ double map(double num, double min, double max, double t_min, double t_max);
 
 //when put pixcel, use above func
 // render is oversitefunc of put_pixcel
-void	render(t_allinfs *infs, double x, double y, double i);
+// void	render(t_allinfs *infs, double x, double y, double i);
 void	my_mlx_pixel_put(t_drawinf *data, int x, int y, int color);
 
 //when want to valc vec, use above funcs

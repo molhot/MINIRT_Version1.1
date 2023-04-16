@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 12:56:45 by user              #+#    #+#             */
-/*   Updated: 2023/04/16 14:41:16 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/16 23:44:29 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,31 @@ static  void	dim2tdim(t_vecinf *dim_vec, double x, double y, double width, doubl
 	setvec_d(dim_vec, tdim_x, tdim_y, tdim_z);
 }
 
+double draw_anyobj(ssize_t position, t_vecinf *eye2scr, t_allinfs *infs)
+{
+	t_objarr	*objarr;
+	double		R_ALL;
+
+	objarr = infs->fix_vecs->objarr;
+	while (position != 0)
+	{
+		objarr = objarr->next_obj;
+		position--;
+	}
+	R_ALL = 0;
+	if (obtain_shapetype(objarr) == BALL)
+		R_ALL = reanderready_ball(eye2scr, infs, objarr);
+	else if (obtain_shapetype(objarr) == PLANE)
+		R_ALL = reanderready_plane(eye2scr, infs, objarr);
+	return (R_ALL);
+}
+
 void    exec(t_allinfs *infs)
 {
 	t_vecinf	eye2scr;
+	ssize_t		position;
+	t_objarr	*objarr;
+	double		R_ALL;
 	int			x;
 	int			y;
 
@@ -39,13 +61,22 @@ void    exec(t_allinfs *infs)
 		{
 			infs->drawinf->x = x;
 			infs->drawinf->y = y;
-			// if ((x >= 250 && x <= 400) && ( y >= 380 && y <= 450))
-			// {
-			// 	printf("x %d, y %d\n", x, y);
-				dim2tdim(infs->fix_vecs->scr_v, x, y, (double)infs->drawinf->width, (double)infs->drawinf->height);
-				neg_vec(&eye2scr, &infs->fix_vecs->scr_v->vec, &infs->fix_vecs->eye_v->vec);
-				render_ready(&eye2scr, infs);
-			// }
+			dim2tdim(infs->fix_vecs->scr_v, x, y, (double)infs->drawinf->width, (double)infs->drawinf->height);
+			neg_vec(&eye2scr, &infs->fix_vecs->scr_v->vec, &infs->fix_vecs->eye_v->vec);
+			position = grasp_position(&eye2scr, infs);
+			if (position == -1)
+				draw_background(infs);
+			else
+			{
+				R_ALL = draw_anyobj(position, &eye2scr, infs);
+				objarr = infs->fix_vecs->objarr;
+				while (position != 0)
+				{
+					objarr = objarr->next_obj;
+					position--;
+				}
+				draw_fadecolor(R_ALL, infs, x, y, objarr);
+			}
 			x++;
 		}
 		x = 0;

@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 13:28:24 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/16 14:57:13 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/16 17:16:18 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ double	calc_lgtplane(t_allinfs *infs, t_plane *plane, t_vecinf *planeits)
 			R_all = R_all + calc_Rsplane(n_l, &its2lgt, plane, &eye2its);
 			R_all = R_all + plane->t_refCoeff.kd * plane->t_refCoeff.Ii * n_l;
 			R_all = R_all + plane->t_refCoeff.ka * plane->t_refCoeff.Ia;
+			
 		}
 		lgtarr = lgtarr->next_lgt;
 	}

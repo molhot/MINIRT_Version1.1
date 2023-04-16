@@ -6,11 +6,32 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 13:26:01 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/16 13:43:47 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/17 00:06:32 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../miniRT.h"
+
+double	recursive_ray(t_vecinf *ballits_v, t_allinfs *infs, t_vecinf *its_n)
+{
+	t_vecinf	its2eye;
+	t_vecinf	recursive_dis;
+	t_vecinf	recursive_ray;
+	double		v_n;
+	double		epsiron;
+
+	epsiron = 1 / 512;
+	neg_vec(&its2eye, &infs->fix_vecs->eye_v->vec, &ballits_v->vec);
+	v_n = dot_vec(&its2eye.u_vec, &its_n->vec);
+	t_mix_vec_all(&recursive_dis, v_n, &its_n->vec, -1, &its2eye.u_vec);
+	t_mix_vec(&recursive_ray, &ballits_v->vec, epsiron, &recursive_dis.vec);
+	if (grasp_position(&recursive_ray, infs) == -1)
+		return (0);
+	else
+		if (v_n > 0)
+			return (draw_anyobj(grasp_position(&recursive_ray, infs), &recursive_ray, infs));
+	return (0);
+}
 
 double	calc_Rsball(t_vecinf *eye2scr, t_vecinf	*ballmid2lgt, t_vecinf *ballmid2ballits, t_refCoeff *refcoeff_inf, double n_l)
 {
@@ -27,16 +48,18 @@ double	calc_Rsball(t_vecinf *eye2scr, t_vecinf	*ballmid2lgt, t_vecinf *ballmid2b
 	return (0);
 }
 
-double	calc_lgtball(t_lgtarr *lgtarr, t_vecinf *eye2scr, t_ball *ball, t_vecinf *eye_v, double t)
+double	calc_lgtball(t_allinfs *infs, t_vecinf *eye2scr, t_ball *ball, t_vecinf *eye_v, double t)
 {
 	t_vecinf	ballits_v;
 	t_vecinf	ballmid2ballits;
 	t_vecinf	ballmid2lgt;
+	t_lgtarr	*lgtarr;
 	double		n_l;
 	double		R_all;
 
 	n_l = 0;
 	R_all = 0;
+	lgtarr = infs->fix_vecs->lgtarr;
 	t_mix_vec(&ballits_v, &eye_v->vec, t, &eye2scr->vec);
 	neg_vec(&ballmid2ballits, &ballits_v.vec, &ball->center_v->vec);
 	while (lgtarr != NULL)
@@ -46,6 +69,8 @@ double	calc_lgtball(t_lgtarr *lgtarr, t_vecinf *eye2scr, t_ball *ball, t_vecinf 
 		R_all = R_all + calc_Rsball(eye2scr, &ballmid2lgt, &ballmid2ballits, &ball->t_refCoeff, n_l);
 		R_all = R_all + ball->t_refCoeff.kd * ball->t_refCoeff.Ii * n_l;
 		R_all = R_all + ball->t_refCoeff.ka * ball->t_refCoeff.Ia;
+		if (ball->has_specmir == true)
+			R_all = R_all + recursive_ray(&ballits_v, infs, &ballmid2ballits) * ball->spec_mir;
 		lgtarr = lgtarr -> next_lgt;
 	}
 	return (R_all);
@@ -57,6 +82,6 @@ double	reanderready_ball(t_vecinf *eye2scr, t_allinfs *infs, t_objarr *objarr)
 
 	t = ray2ball_itsch(eye2scr, infs, objarr->ball);
 	if (t > 0)
-		return calc_lgtball(infs->fix_vecs->lgtarr, eye2scr, objarr->ball, infs->fix_vecs->eye_v, t);
+		return calc_lgtball(infs, eye2scr, objarr->ball, infs->fix_vecs->eye_v, t);
 	return (0);
 }

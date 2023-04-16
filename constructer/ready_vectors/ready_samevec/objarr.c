@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objarr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:25:53 by user              #+#    #+#             */
-/*   Updated: 2023/04/15 21:32:50 by user             ###   ########.fr       */
+/*   Updated: 2023/04/17 00:07:43 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,15 @@ static  void    ready_ball(t_ball *ball, int pos)
         set_vec(ball->center_v, 0, 0, 5);
     else if (pos == 2)
         set_vec(ball->center_v, 3, 0, 10);
+    else if (pos == 3)
+    {
+        set_vec(ball->center_v, -2, 0, 10);
+        ball->rad = 1;
+        refCoeff(&ball->t_refCoeff);
+        ball->has_specmir = true;
+        ball->spec_mir = 1;
+        return ;
+    }
     ball->rad = 1;
     refCoeff(&ball->t_refCoeff);
     ball->has_specmir = false;
@@ -68,14 +77,19 @@ void    ready_objarr(t_fvec *fvecs)
 
 	fvecs->objarr = malloc(sizeof(t_objarr) * 1);
 	tmp_obj = fvecs->objarr;
-	ready_object(tmp_obj, BALL, 1);
+	ready_object(tmp_obj, BALL, 2);
     /*ここを足していけば試せる*/
-	tmp_obj->next_obj = malloc(sizeof(t_objarr) * 1);
-    tmp_obj = tmp_obj->next_obj;
-    ready_object(tmp_obj, BALL, 2);
+	// tmp_obj->next_obj = malloc(sizeof(t_objarr) * 1);
+    // tmp_obj = tmp_obj->next_obj;
+    // ready_object(tmp_obj, BALL, 1);
     /**/
     tmp_obj->next_obj = malloc(sizeof(t_objarr) * 1);
     tmp_obj = tmp_obj->next_obj;
     ready_object(tmp_obj, PLANE, 1);
+
+    tmp_obj->next_obj = malloc(sizeof(t_objarr) * 1);
+    tmp_obj = tmp_obj->next_obj;
+    ready_object(tmp_obj, BALL, 3);
+
     tmp_obj->next_obj = NULL;
 }
