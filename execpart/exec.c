@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 12:56:45 by user              #+#    #+#             */
-/*   Updated: 2023/04/16 23:44:29 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/20 20:55:52 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ double draw_anyobj(ssize_t position, t_vecinf *eye2scr, t_allinfs *infs)
 	double		R_ALL;
 
 	objarr = infs->fix_vecs->objarr;
+	if (position == -1)
+		return (-1);
 	while (position != 0)
 	{
 		objarr = objarr->next_obj;
@@ -69,13 +71,18 @@ void    exec(t_allinfs *infs)
 			else
 			{
 				R_ALL = draw_anyobj(position, &eye2scr, infs);
-				objarr = infs->fix_vecs->objarr;
-				while (position != 0)
+				if (R_ALL != -1)
 				{
-					objarr = objarr->next_obj;
-					position--;
+					objarr = infs->fix_vecs->objarr;
+					while (position != 0)
+					{
+						objarr = objarr->next_obj;
+						position--;
+					}
+					draw_fadecolor(R_ALL, infs, x, y, objarr);
 				}
-				draw_fadecolor(R_ALL, infs, x, y, objarr);
+				else
+					draw_background(infs);
 			}
 			x++;
 		}

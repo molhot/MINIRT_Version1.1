@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:25:53 by user              #+#    #+#             */
-/*   Updated: 2023/04/17 00:07:43 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/20 23:01:37 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static  void    ready_ball(t_ball *ball, int pos)
     if (pos == 1)
         set_vec(ball->center_v, 0, 0, 5);
     else if (pos == 2)
-        set_vec(ball->center_v, 3, 0, 10);
+        set_vec(ball->center_v, 2, 0, 10);
     else if (pos == 3)
     {
         set_vec(ball->center_v, -2, 0, 10);
@@ -79,9 +79,9 @@ void    ready_objarr(t_fvec *fvecs)
 	tmp_obj = fvecs->objarr;
 	ready_object(tmp_obj, BALL, 2);
     /*ここを足していけば試せる*/
-	// tmp_obj->next_obj = malloc(sizeof(t_objarr) * 1);
-    // tmp_obj = tmp_obj->next_obj;
-    // ready_object(tmp_obj, BALL, 1);
+	tmp_obj->next_obj = malloc(sizeof(t_objarr) * 1);
+    tmp_obj = tmp_obj->next_obj;
+    ready_object(tmp_obj, BALL, 1);
     /**/
     tmp_obj->next_obj = malloc(sizeof(t_objarr) * 1);
     tmp_obj = tmp_obj->next_obj;

@@ -27,7 +27,7 @@ SRCS = miniRT_main.c\
 
 OBJS = $(SRCS:.c=.o)
 
-CC = cc
+CC = gcc -g
 
 CFLAGS = -Wall -Wextra -Werror -I includes
 
