@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_readyplane.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 13:28:24 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/16 17:16:18 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/22 17:54:39 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,12 @@ double	calc_lgtplane(t_allinfs *infs, t_plane *plane, t_vecinf *planeits)
 		if (shade_ch(objarr, planeits, &its2lgt, infs, lgtarr) == true)
 		{
 			n_l = map(dot_vec(&plane->n->u_vec, &its2lgt.u_vec), -1, 1, 0, 1);
-			R_all = R_all + calc_Rsplane(n_l, &its2lgt, plane, &eye2its);
-			R_all = R_all + plane->t_refCoeff.kd * plane->t_refCoeff.Ii * n_l;
-			R_all = R_all + plane->t_refCoeff.ka * plane->t_refCoeff.Ia;
+			if (n_l != 0)
+			{
+				R_all = R_all + calc_Rsplane(n_l, &its2lgt, plane, &eye2its);
+				R_all = R_all + plane->t_refCoeff.kd * plane->t_refCoeff.Ii * n_l;
+				R_all = R_all + plane->t_refCoeff.ka * plane->t_refCoeff.Ia;
+			}
 			
 		}
 		lgtarr = lgtarr->next_lgt;
@@ -98,6 +101,7 @@ double	reanderready_plane(t_vecinf *eye2scr, t_allinfs *infs, t_objarr *objarr)
 	t = ray2plane_itsch(eye2scr, infs, objarr->plane);
 	if (t > 0)
 	{
+		//printf("%f\n", t);
 		t_mix_vec(&planeits, &infs->fix_vecs->eye_v->vec, t, &eye2scr->vec);
 		return calc_lgtplane(infs, objarr->plane, &planeits);
 	}

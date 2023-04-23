@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 12:56:45 by user              #+#    #+#             */
-/*   Updated: 2023/04/20 20:55:52 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/22 17:58:04 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,35 @@ void    exec(t_allinfs *infs)
 	{
 		while (x != infs->drawinf->width)
 		{
+			#ifdef TEST
+			if ((x > 50 && y > 100) && )
+			{
+				infs->drawinf->x = x;
+				infs->drawinf->y = y;
+				dim2tdim(infs->fix_vecs->scr_v, x, y, (double)infs->drawinf->width, (double)infs->drawinf->height);
+				neg_vec(&eye2scr, &infs->fix_vecs->scr_v->vec, &infs->fix_vecs->eye_v->vec);
+				position = grasp_position(&eye2scr, infs);
+				if (position == -1)
+					draw_background(infs);
+				else
+				{
+					R_ALL = draw_anyobj(position, &eye2scr, infs);
+					if (R_ALL != -1)
+					{
+						objarr = infs->fix_vecs->objarr;
+						while (position != 0)
+						{
+							objarr = objarr->next_obj;
+							position--;
+						}
+						draw_fadecolor(R_ALL, infs, x, y, objarr);
+					}
+					else
+						draw_background(infs);
+				}
+			}
+			#endif
+			#ifndef TEST
 			infs->drawinf->x = x;
 			infs->drawinf->y = y;
 			dim2tdim(infs->fix_vecs->scr_v, x, y, (double)infs->drawinf->width, (double)infs->drawinf->height);
@@ -84,6 +113,7 @@ void    exec(t_allinfs *infs)
 				else
 					draw_background(infs);
 			}
+			#endif
 			x++;
 		}
 		x = 0;

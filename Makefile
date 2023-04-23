@@ -31,6 +31,13 @@ CC = gcc -g
 
 CFLAGS = -Wall -Wextra -Werror -I includes
 
+ifdef TEST
+	CFLAGS += -D TEST
+endif
+
+test:
+	make all TEST=1
+
 all: $(NAME)
 
 ${NAME}: ${OBJS} ${LIBMLX}

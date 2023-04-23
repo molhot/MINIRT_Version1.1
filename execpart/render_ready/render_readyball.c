@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_readyball.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 13:26:01 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/20 23:09:33 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/22 17:44:12 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,23 @@ double	recursive_ray(t_vecinf *ballits_v, t_allinfs *infs, t_vecinf *its_n)
 	double		epsiron;
 
 	epsiron = 1 / 512;
-	(void)ballits_v;
-	neg_vec(&its2eye, &infs->fix_vecs->eye_v->vec, &infs->fix_vecs->scr_v->vec);
+	neg_vec(&its2eye, &infs->fix_vecs->eye_v->vec, &ballits_v->vec);
 	v_n = dot_vec(&its2eye.u_vec, &its_n->u_vec);
 	t_mix_vec_all(&recursive_dis, 2 * v_n, &its_n->u_vec, -1, &its2eye.u_vec);
 	//t_mix_vec(&nanka, &ballits_v->vec, epsiron, &recursive_dis.vec);
-	set_vec(infs->fix_vecs->eye_v, ballits_v->vec.x + epsiron * recursive_dis.vec.x
-		, ballits_v->vec.y + epsiron * recursive_dis.vec.y
-		, ballits_v->vec.z + epsiron * recursive_dis.vec.z);
+	set_vec(
+		infs->fix_vecs->eye_v
+		, ballits_v->vec.x + epsiron * recursive_dis.u_vec.x
+		, ballits_v->vec.y + epsiron * recursive_dis.u_vec.y
+		, ballits_v->vec.z + epsiron * recursive_dis.u_vec.z
+	);
 	if (grasp_position(&recursive_dis, infs) == -1)
 		return (-1);
 	else if (v_n <= 0)
 		return (-1);
 	else
 	{
-		printf("%ld\n", grasp_position(&recursive_dis, infs));
+		//printf("%ld\n", grasp_position(&recursive_dis, infs));
 		return (draw_anyobj(grasp_position(&recursive_dis, infs), &recursive_dis, infs));
 	}
 }
@@ -80,8 +82,13 @@ double	calc_lgtball(t_allinfs *infs, t_vecinf *eye2scr, t_ball *ball, t_vecinf *
 			R_all = R_all + ball->t_refCoeff.ka * ball->t_refCoeff.Ia;
 			if (ball->has_specmir == true)
 			{
-				R_all = 0;
-				R_all = R_all + recursive_ray(&ballits_v, infs, &ballmid2ballits) * ball->spec_mir;
+				if (recursive_ray(&ballits_v, infs, &ballmid2ballits) > 0)
+					R_all = R_all + recursive_ray(&ballits_v, infs, &ballmid2ballits) * ball->spec_mir;
+				else
+				{
+					set_vec(infs->fix_vecs->eye_v, 0, 0, -5);
+					return (-1);
+				}
 				set_vec(infs->fix_vecs->eye_v, 0, 0, -5);
 			}
 		}

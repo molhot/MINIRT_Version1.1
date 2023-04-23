@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objarr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:25:53 by user              #+#    #+#             */
-/*   Updated: 2023/04/20 23:01:37 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/22 17:00:53 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@ static  void    refCoeff(t_refCoeff *refcoeff)
 	refcoeff->alpha = 8;
 	refcoeff->Ia = 0.1;
 	refcoeff->Ii = 1.0;
+}
+
+static  void    refCoeff2(t_refCoeff *refcoeff)
+{
+    refcoeff->ka = 0;
+	refcoeff->kd = 0;
+	refcoeff->ks = 0;
+	refcoeff->alpha = 0;
+	refcoeff->Ia = 0;
+	refcoeff->Ii = 0;
 }
 
 static  void    ready_plane(t_plane *plane)
@@ -39,17 +49,17 @@ static  void    ready_ball(t_ball *ball, int pos)
     if (pos == 1)
         set_vec(ball->center_v, 0, 0, 5);
     else if (pos == 2)
-        set_vec(ball->center_v, 2, 0, 10);
+        set_vec(ball->center_v, -2, 3, 10);
     else if (pos == 3)
     {
         set_vec(ball->center_v, -2, 0, 10);
         ball->rad = 1;
-        refCoeff(&ball->t_refCoeff);
+        refCoeff2(&ball->t_refCoeff);
         ball->has_specmir = true;
         ball->spec_mir = 1;
         return ;
     }
-    ball->rad = 1;
+    ball->rad = 0.5;
     refCoeff(&ball->t_refCoeff);
     ball->has_specmir = false;
     ball->spec_mir = 0;
@@ -79,9 +89,9 @@ void    ready_objarr(t_fvec *fvecs)
 	tmp_obj = fvecs->objarr;
 	ready_object(tmp_obj, BALL, 2);
     /*ここを足していけば試せる*/
-	tmp_obj->next_obj = malloc(sizeof(t_objarr) * 1);
-    tmp_obj = tmp_obj->next_obj;
-    ready_object(tmp_obj, BALL, 1);
+	// tmp_obj->next_obj = malloc(sizeof(t_objarr) * 1);
+    // tmp_obj = tmp_obj->next_obj;
+    // ready_object(tmp_obj, BALL, 1);
     /**/
     tmp_obj->next_obj = malloc(sizeof(t_objarr) * 1);
     tmp_obj = tmp_obj->next_obj;
