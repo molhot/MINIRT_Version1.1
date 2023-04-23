@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 13:26:01 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/23 17:25:19 by user             ###   ########.fr       */
+/*   Updated: 2023/04/23 18:36:52 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ double	recursive_ray(t_vecinf *ballits_v, t_allinfs *infs, t_vecinf *its_n)
 		, ballits_v->vec.y + recursive_dis.u_vec.y
 		, ballits_v->vec.z + recursive_dis.u_vec.z
 	);
-	if (grasp_position(&recursive_dis, infs) == -1)
+	ssize_t	pos;
+	pos = grasp_position(&recursive_dis, infs);
+	if (pos == -1)
 		return (-1);
 	else
 	{
@@ -46,13 +48,12 @@ double	recursive_ray(t_vecinf *ballits_v, t_allinfs *infs, t_vecinf *its_n)
 		// show_vec(&recursive_dis);
 		// if (draw_anyobj(grasp_position(&recursive_dis, infs), &recursive_dis, infs) != -1)
 		// 	printf("%f\n", draw_anyobj(grasp_position(&recursive_dis, infs), &recursive_dis, infs));
-		ssize_t	pos;
-		pos = grasp_position(&recursive_dis, infs);
 		// if (pos == 2)
-		printf("%ld\n", pos);
+		//printf("%ld\n", pos);
 		double	fade;
 		nnnn++;
 		fade = draw_anyobj(pos, &recursive_dis, infs);
+		printf("%f\n", fade);
 		return (fade);
 	}
 }
@@ -98,19 +99,19 @@ double	calc_lgtball(t_allinfs *infs, t_vecinf *eye2scr, t_ball *ball, t_vecinf *
 				R_all = R_all + ball->t_refCoeff.kd * ball->t_refCoeff.Ii * n_l;
 				R_all = R_all + ball->t_refCoeff.ka * ball->t_refCoeff.Ia;
 			}
-			else if (ball->has_specmir == true)
+			else
 			{
 				// show_vec(eye2scr);
 				double	recursive = recursive_ray(&ballits_v, infs, &ballmid2ballits);
 				if (recursive > 0)
 				{
 					R_all = R_all + recursive;
-					printf("i is %d\n", nnnn);
 					nnnn = 0;
 				}
 				else
 				{
 					set_vec(infs->fix_vecs->eye_v, 0, 0, -5);
+					nnnn = 0;
 					return (-1);
 				}
 				set_vec(infs->fix_vecs->eye_v, 0, 0, -5);
