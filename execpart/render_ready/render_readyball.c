@@ -6,11 +6,13 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 13:26:01 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/22 17:44:12 by user             ###   ########.fr       */
+/*   Updated: 2023/04/23 17:25:19 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../miniRT.h"
+
+int nnnn = 0;
 
 double	recursive_ray(t_vecinf *ballits_v, t_allinfs *infs, t_vecinf *its_n)
 {
@@ -18,27 +20,40 @@ double	recursive_ray(t_vecinf *ballits_v, t_allinfs *infs, t_vecinf *its_n)
 	t_vecinf	recursive_dis;
 	//t_vecinf	nanka;
 	double		v_n;
-	double		epsiron;
+	//double		epsiron;
 
-	epsiron = 1 / 512;
+	//epsiron = 1 / 512;
 	neg_vec(&its2eye, &infs->fix_vecs->eye_v->vec, &ballits_v->vec);
 	v_n = dot_vec(&its2eye.u_vec, &its_n->u_vec);
+	if (v_n <= 0)
+		return (-1);
 	t_mix_vec_all(&recursive_dis, 2 * v_n, &its_n->u_vec, -1, &its2eye.u_vec);
+	//t_mix_vec_all(&recursive_dis, 2 * v_n, &its2eye.u_vec, -1, &its_n->u_vec);
+	//set_vec(&recursive_dis, -1 * its2eye.u_vec.x, its2eye.u_vec.y, -1 * its2eye.u_vec.z);
 	//t_mix_vec(&nanka, &ballits_v->vec, epsiron, &recursive_dis.vec);
 	set_vec(
 		infs->fix_vecs->eye_v
-		, ballits_v->vec.x + epsiron * recursive_dis.u_vec.x
-		, ballits_v->vec.y + epsiron * recursive_dis.u_vec.y
-		, ballits_v->vec.z + epsiron * recursive_dis.u_vec.z
+		, ballits_v->vec.x + recursive_dis.u_vec.x
+		, ballits_v->vec.y + recursive_dis.u_vec.y
+		, ballits_v->vec.z + recursive_dis.u_vec.z
 	);
 	if (grasp_position(&recursive_dis, infs) == -1)
 		return (-1);
-	else if (v_n <= 0)
-		return (-1);
 	else
 	{
-		//printf("%ld\n", grasp_position(&recursive_dis, infs));
-		return (draw_anyobj(grasp_position(&recursive_dis, infs), &recursive_dis, infs));
+		//printf("%f\n", draw_anyobj(grasp_position(&recursive_dis, infs), &recursive_dis, infs));
+		// printf("recursive vec is \n");
+		// show_vec(&recursive_dis);
+		// if (draw_anyobj(grasp_position(&recursive_dis, infs), &recursive_dis, infs) != -1)
+		// 	printf("%f\n", draw_anyobj(grasp_position(&recursive_dis, infs), &recursive_dis, infs));
+		ssize_t	pos;
+		pos = grasp_position(&recursive_dis, infs);
+		// if (pos == 2)
+		printf("%ld\n", pos);
+		double	fade;
+		nnnn++;
+		fade = draw_anyobj(pos, &recursive_dis, infs);
+		return (fade);
 	}
 }
 
@@ -77,13 +92,22 @@ double	calc_lgtball(t_allinfs *infs, t_vecinf *eye2scr, t_ball *ball, t_vecinf *
 		n_l = map(dot_vec(&ballmid2ballits.u_vec, &ballmid2lgt.u_vec), -1, 1, 0, 1);
 		if (n_l != 0)
 		{
-			R_all = R_all + calc_Rsball(eye2scr, &ballmid2lgt, &ballmid2ballits, &ball->t_refCoeff, n_l);
-			R_all = R_all + ball->t_refCoeff.kd * ball->t_refCoeff.Ii * n_l;
-			R_all = R_all + ball->t_refCoeff.ka * ball->t_refCoeff.Ia;
-			if (ball->has_specmir == true)
+			if (ball->has_specmir == false)
 			{
-				if (recursive_ray(&ballits_v, infs, &ballmid2ballits) > 0)
-					R_all = R_all + recursive_ray(&ballits_v, infs, &ballmid2ballits) * ball->spec_mir;
+				R_all = R_all + calc_Rsball(eye2scr, &ballmid2lgt, &ballmid2ballits, &ball->t_refCoeff, n_l);
+				R_all = R_all + ball->t_refCoeff.kd * ball->t_refCoeff.Ii * n_l;
+				R_all = R_all + ball->t_refCoeff.ka * ball->t_refCoeff.Ia;
+			}
+			else if (ball->has_specmir == true)
+			{
+				// show_vec(eye2scr);
+				double	recursive = recursive_ray(&ballits_v, infs, &ballmid2ballits);
+				if (recursive > 0)
+				{
+					R_all = R_all + recursive;
+					printf("i is %d\n", nnnn);
+					nnnn = 0;
+				}
 				else
 				{
 					set_vec(infs->fix_vecs->eye_v, 0, 0, -5);

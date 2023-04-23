@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:25:53 by user              #+#    #+#             */
-/*   Updated: 2023/04/22 17:00:53 by user             ###   ########.fr       */
+/*   Updated: 2023/04/23 16:58:59 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static  void    ready_ball(t_ball *ball, int pos)
         ball->spec_mir = 1;
         return ;
     }
-    ball->rad = 0.5;
+    ball->rad = 2.0;
     refCoeff(&ball->t_refCoeff);
     ball->has_specmir = false;
     ball->spec_mir = 0;

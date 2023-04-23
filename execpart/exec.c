@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 12:56:45 by user              #+#    #+#             */
-/*   Updated: 2023/04/22 17:58:04 by user             ###   ########.fr       */
+/*   Updated: 2023/04/23 15:58:45 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void    exec(t_allinfs *infs)
 		while (x != infs->drawinf->width)
 		{
 			#ifdef TEST
-			if ((x > 50 && y > 100) && )
+			if ((x > 20 && y > 0) && (x < 150 && y < 500))
 			{
 				infs->drawinf->x = x;
 				infs->drawinf->y = y;
