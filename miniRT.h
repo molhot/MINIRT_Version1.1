@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:06:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/16 23:44:35 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/27 22:34:50 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 //judge shape by magic number
 # define BALL 1
 # define PLANE 2
-# define CORN 3
+# define CYLINDER 3
 
 // simple vector
 typedef	struct s_vec
@@ -69,6 +69,13 @@ typedef struct s_refCoeff {
 	double	Ii;
 }t_refCoeff;
 
+typedef	struct s_cylinder{
+	t_vecinf	*center_v;
+	t_vecinf	*center_n_v;
+	double		rad;
+	double		height;
+}t_cylinder;
+
 typedef	struct s_plane{
 	t_vecinf	*n;
 	t_vecinf	*point;
@@ -92,6 +99,7 @@ struct s_objarr
 {
 	t_plane		*plane;
 	t_ball		*ball;
+	t_cylinder	*cylinder;
 	t_objarr	*next_obj;
 };
 

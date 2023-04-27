@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 12:56:45 by user              #+#    #+#             */
-/*   Updated: 2023/04/23 18:29:16 by user             ###   ########.fr       */
+/*   Updated: 2023/04/27 22:44:04 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ void    exec(t_allinfs *infs)
 			}
 			#endif
 			#ifndef TEST
+
+			
 			infs->drawinf->x = x;
 			infs->drawinf->y = y;
 			dim2tdim(infs->fix_vecs->scr_v, x, y, (double)infs->drawinf->width, (double)infs->drawinf->height);
