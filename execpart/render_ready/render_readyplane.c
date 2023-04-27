@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_readyplane.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 13:28:24 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/22 17:54:39 by user             ###   ########.fr       */
+/*   Updated: 2023/04/24 21:57:57 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ double	calc_lgtplane(t_allinfs *infs, t_plane *plane, t_vecinf *planeits)
 	n_l = 0;
 	R_all = 0;
 	neg_vec(&eye2its, &planeits->vec, &infs->fix_vecs->eye_v->vec);
+	R_all = R_all + plane->t_refCoeff.ka * plane->t_refCoeff.Ia;
 	while (lgtarr != NULL)
 	{
 		objarr = infs->fix_vecs->objarr;
@@ -84,7 +85,6 @@ double	calc_lgtplane(t_allinfs *infs, t_plane *plane, t_vecinf *planeits)
 			{
 				R_all = R_all + calc_Rsplane(n_l, &its2lgt, plane, &eye2its);
 				R_all = R_all + plane->t_refCoeff.kd * plane->t_refCoeff.Ii * n_l;
-				R_all = R_all + plane->t_refCoeff.ka * plane->t_refCoeff.Ia;
 			}
 			
 		}
