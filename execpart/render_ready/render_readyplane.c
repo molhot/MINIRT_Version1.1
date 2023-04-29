@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_readyplane.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 13:28:24 by mochitteiun       #+#    #+#             */
-/*   Updated: 2023/04/24 21:57:57 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/29 12:08:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ double	calc_Rsplane(double n_l, t_vecinf *its2lgt, t_plane *plane, t_vecinf *eye
 	v_r = map(dot_vec(&reverse.vec, &rev_eye.vec), -1, 1, 0, 1);
 	return (plane->t_refCoeff.ks * plane->t_refCoeff.ks * pow(v_r, plane->t_refCoeff.alpha));
 }
-
-double i = 0;
 
 bool	judge_showditem_2(t_objarr *objarr, t_vecinf *itsep2lgt, t_allinfs *infs, t_vecinf *its)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:06:09 by user              #+#    #+#             */
-/*   Updated: 2023/04/27 22:34:50 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/29 15:35:41 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct s_refCoeff {
 typedef	struct s_cylinder{
 	t_vecinf	*center_v;
 	t_vecinf	*center_n_v;
+	t_refCoeff	t_refCoeff;
 	double		rad;
 	double		height;
 }t_cylinder;
@@ -179,6 +180,9 @@ double	ray2ball_itsch(t_vecinf *eye2scr, t_allinfs *infs, t_ball *ball);
 double	ray2plane_itsch(t_vecinf *eye2scr, t_allinfs *infs, t_plane *plane);
 double  itsray2otherball_itsch(t_vecinf *itsep2lgt, t_ball *ball, t_vecinf *its);
 double  ray2ballits(t_vecinf *eye2scr, t_vecinf *eye2ballmid, double rad);
+bool	ray2ball_cylinder(t_vecinf *eye2scr, t_allinfs *infs, t_cylinder *cylinder);
+double  renderready_cylinder(t_vecinf *eye2scr, t_allinfs *infs, t_cylinder *cylinder);
+double  ray2ball_its_ratio(t_vecinf *eye2scr, t_allinfs *infs, t_cylinder *cylinder);
 
 //
 void	draw_fadecolor(double i, t_allinfs *infs, int x, int y, t_objarr *objarr);
@@ -198,6 +202,7 @@ void	my_mlx_pixel_put(t_drawinf *data, int x, int y, int color);
 //when want to valc vec, use above funcs
 void    add_vec(t_vecinf *sub, t_vec *v1, t_vec *v2); // like v1 + v2
 void	neg_vec(t_vecinf *sub, t_vec *v1, t_vec *v2); // like v1 - v2
+void	calc_outerproduct(t_vecinf *sub, t_vec *v1, t_vec *v2); // calclate outervec
 double	dot_vec(t_vec *v1, t_vec *v2); // like v1 * v2
 void    t_mix_vec(t_vecinf *sub, t_vec *v1, double t, t_vec *v2); // like v1 + t * v2
 void    t_neg_vec(t_vecinf *sub, t_vec *v1, double t, t_vec *v2); // like v1 - t * v2

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objarr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:25:53 by user              #+#    #+#             */
-/*   Updated: 2023/04/27 22:58:57 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/04/29 15:50:42 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,12 @@ static  void    ready_ball(t_ball *ball, int pos)
 static void    ready_cylinder(t_cylinder	*cylinder)
 {
     cylinder->center_v = malloc(sizeof(t_vecinf) * 1);
-    set_vec(cylinder->center_v, 0.0, 0.0, 2.0);
+    set_vec(cylinder->center_v, 0.0, 0.0, 5.0);
     cylinder->center_n_v = malloc(sizeof(t_vecinf) * 1);
     set_vec(cylinder->center_n_v, 0.0, 1.0, 0.0);
+    refCoeff(&cylinder->t_refCoeff);
     cylinder->rad = 0.5;
-    cylinder->height = 2;
+    cylinder->height = 2.0;
 }
 
 void    ready_object(t_objarr *objarr, double type, int pos)
