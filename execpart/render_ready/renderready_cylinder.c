@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 12:04:03 by user              #+#    #+#             */
-/*   Updated: 2023/04/29 15:54:34 by user             ###   ########.fr       */
+/*   Updated: 2023/04/29 16:06:41 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,10 @@ double  calc_lgtcylinder(t_allinfs *infs, t_vecinf *eye2scr, t_cylinder *cylinde
     R_all = 0;
     R_all = R_all + cylinder->t_refCoeff.ka * cylinder->t_refCoeff.Ia;
     its_nvec = calc_its_nvec(cylinderits_v, cylinder);
+    if (cylinderits_v->vec.y < cylinder->center_v->vec.y)
+        return (-1);
+    if (cylinderits_v->vec.y > (cylinder->center_v->vec.y + cylinder->height))
+        return (-1);
     while (lgtarr != NULL)
     {
         neg_vec(&its2lgt, &lgtarr->lgt_v.vec, &cylinderits_v->vec);

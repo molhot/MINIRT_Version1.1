@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:25:53 by user              #+#    #+#             */
-/*   Updated: 2023/04/29 15:50:42 by user             ###   ########.fr       */
+/*   Updated: 2023/04/29 16:16:50 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static  void    refCoeff(t_refCoeff *refcoeff)
     refcoeff->ka = 0.01;
 	refcoeff->kd = 0.69;
 	refcoeff->ks = 0.3;
-	refcoeff->alpha = 8;
+	refcoeff->alpha = 8.0;
 	refcoeff->Ia = 0.1;
 	refcoeff->Ii = 1.0;
 }
@@ -35,12 +35,12 @@ static  void    refCoeff2(t_refCoeff *refcoeff)
 static  void    ready_plane(t_plane *plane)
 {
     plane->n = malloc(sizeof(t_vecinf) * 1);
-    set_vec(plane->n, 0, 1, 0);
+    set_vec(plane->n, 0.0, 1.0, 0.0);
     plane->point = malloc(sizeof(t_vecinf) * 1);
-    set_vec(plane->point, 0, -1, 0);
+    set_vec(plane->point, 0.0, -1.0, 0.0);
     refCoeff(&plane->t_refCoeff);
     plane->has_specmir = false;
-    plane->spec_mir = 0;
+    plane->spec_mir = 0.0;
 }
 
 static  void    ready_ball(t_ball *ball, int pos)
@@ -68,12 +68,12 @@ static  void    ready_ball(t_ball *ball, int pos)
 static void    ready_cylinder(t_cylinder	*cylinder)
 {
     cylinder->center_v = malloc(sizeof(t_vecinf) * 1);
-    set_vec(cylinder->center_v, 0.0, 0.0, 5.0);
+    set_vec(cylinder->center_v, 0.0, 0.0, 0.0);
     cylinder->center_n_v = malloc(sizeof(t_vecinf) * 1);
     set_vec(cylinder->center_n_v, 0.0, 1.0, 0.0);
     refCoeff(&cylinder->t_refCoeff);
     cylinder->rad = 0.5;
-    cylinder->height = 2.0;
+    cylinder->height = 0.5;
 }
 
 void    ready_object(t_objarr *objarr, double type, int pos)
@@ -108,11 +108,11 @@ void    ready_objarr(t_fvec *fvecs)
 	fvecs->objarr = malloc(sizeof(t_objarr) * 1);
 	tmp_obj = fvecs->objarr;
 	ready_object(tmp_obj, CYLINDER, 2);
-    /*ここを足していけば試せる*/
-	// tmp_obj->next_obj = malloc(sizeof(t_objarr) * 1);
-    // tmp_obj = tmp_obj->next_obj;
-    // ready_object(tmp_obj, BALL, 1);
-    /**/
+    // /*ここを足していけば試せる*/
+	// // tmp_obj->next_obj = malloc(sizeof(t_objarr) * 1);
+    // // tmp_obj = tmp_obj->next_obj;
+    // // ready_object(tmp_obj, BALL, 1);
+    // /**/
     // tmp_obj->next_obj = malloc(sizeof(t_objarr) * 1);
     // tmp_obj = tmp_obj->next_obj;
     // ready_object(tmp_obj, PLANE, 1);
@@ -122,4 +122,5 @@ void    ready_objarr(t_fvec *fvecs)
     // ready_object(tmp_obj, BALL, 3);
 
     tmp_obj->next_obj = NULL;
+    //fvecs->objarr = NULL;
 }
